@@ -67,7 +67,7 @@ function Content() {
         </Block>
         <Block factor={1.0}>
           <Html className="bottom-left" style={{ color: "white" }} position={[-canvasWidth / 2, -canvasHeight / 2, 0]}>
-            It was the year 2076.{mobile ? <br /> : " "}The substance had arrived.
+            Full Stack Software Engineer{mobile ? <br /> : " "}React || ASP.NET Core
           </Html>
         </Block>
       </Block>
