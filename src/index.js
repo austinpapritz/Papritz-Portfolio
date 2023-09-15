@@ -4,6 +4,7 @@ import { Canvas, useLoader, useFrame } from "@react-three/fiber"
 import { Html } from "@react-three/drei"
 import { TextureLoader, LinearFilter } from "three"
 import lerp from "lerp"
+
 import { Text, MultilineText } from "./components/Text"
 import Diamonds from "./diamonds/Diamonds"
 import Plane from "./components/Plane"
@@ -57,8 +58,11 @@ function Content() {
     <>
       <Block factor={1} offset={0}>
         <Block factor={1.2}>
+          <Text left size={w * 0.15} position={[-w / 3.2, 4, -1]} color="#d40749">
+            AUSTIN
+          </Text>
           <Text left size={w * 0.15} position={[-w / 3.2, 0.5, -1]} color="#d40749">
-            MOKSHA
+            PAPRITZ
           </Text>
         </Block>
         <Block factor={1.0}>
