@@ -84,6 +84,7 @@ a:hover {
 }
 
 .bottom-left {
+	width: 350px;
 	padding: 1.5rem;
 	transform: translate3d(0, -100%, 0) !important;
 }
