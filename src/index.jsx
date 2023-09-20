@@ -12,6 +12,7 @@ import { Block, useBlock } from "./blocks"
 import state from "./store"
 import "./styles.css"
 
+// A Plane geometry that fades out in front of camera to give the illusion of a cinematic transition
 function Startup() {
 	const ref = useRef()
 	useFrame(() => (ref.current.material.opacity = lerp(ref.current.material.opacity, 0, 0.025)))
@@ -24,7 +25,7 @@ function Paragraph({ image, index, offset, factor, header, aspect, text }) {
 	const alignRight = (canvasWidth - w * size - margin) / 2
 	const pixelWidth = w * state.zoom * size
 	const left = !(index % 2)
-	const color = index % 2 ? "#D40749" : "#2FE8C3"
+	const color = index % 2 ? "#d40733" : "#2fe85d"
 	return (
 		<Block factor={factor} offset={offset}>
 			<group position={[left ? -alignRight : alignRight, 0, 0]}>
@@ -58,10 +59,10 @@ function Content() {
 		<>
 			<Block factor={1} offset={0}>
 				<Block factor={1.2}>
-					<Text left size={w * 0.15} position={[-w / 3.2, 4, -1]} color="#d40749">
+					<Text left size={w * 0.15} position={[-w / 3.2, 4, -1]} color="#d40733">
 						AUSTIN
 					</Text>
-					<Text left size={w * 0.15} position={[-w / 3.2, 0.5, -1]} color="#d40749">
+					<Text left size={w * 0.15} position={[-w / 3.2, 0.5, -1]} color="#d40733">
 						PAPRITZ
 					</Text>
 				</Block>
@@ -71,8 +72,9 @@ function Content() {
 					</Html>
 				</Block>
 			</Block>
+			{/* "four zero zero" text */}
 			<Block factor={1.2} offset={5.7}>
-				<MultilineText top left size={w * 0.15} lineHeight={w / 5} position={[-w / 3.5, 0, -1]} color="#2fe8c3" text={"four\nzero\nzero"} />
+				<MultilineText top left size={w * 0.15} lineHeight={w / 5} position={[-w / 3.5, 0, -1]} color="#2fe85d" text={"four\nzero\nzero"} />
 			</Block>
 			{state.paragraphs.map((props, index) => (
 				<Paragraph key={index} index={index} {...props} image={images[index]} />
