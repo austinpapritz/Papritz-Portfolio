@@ -1,9 +1,9 @@
 import { ShaderMaterial } from "three"
 
 export default class RefractionMaterial extends ShaderMaterial {
-  constructor(options) {
-    super({
-      vertexShader: `varying vec3 worldNormal;
+	constructor(options) {
+		super({
+			vertexShader: `varying vec3 worldNormal;
       varying vec3 viewDirection;
       void main() {
         vec4 transformedNormal = vec4(normal, 0.);
@@ -16,7 +16,7 @@ export default class RefractionMaterial extends ShaderMaterial {
         viewDirection = normalize((modelMatrix * vec4( position, 1.0)).xyz - cameraPosition);;
         gl_Position = projectionMatrix * modelViewMatrix * transformedPosition;
       }`,
-      fragmentShader: `uniform sampler2D envMap;
+			fragmentShader: `uniform sampler2D envMap;
       uniform sampler2D backfaceMap;
       uniform vec2 resolution;
       varying vec3 worldNormal;
@@ -31,11 +31,11 @@ export default class RefractionMaterial extends ShaderMaterial {
         //gl_FragColor = vec4(mix(color.rgb, vec3(0.15), fresnelFunc(viewDirection, normal)), 1.0);
         gl_FragColor = vec4(mix(color.rgb, vec3(0.4), fresnelFunc(viewDirection, normal)), 1.0);
       }`,
-      uniforms: {
-        envMap: { value: options.envMap },
-        backfaceMap: { value: options.backfaceMap },
-        resolution: { value: options.resolution }
-      }
-    })
-  }
+			uniforms: {
+				envMap: { value: options.envMap },
+				backfaceMap: { value: options.backfaceMap },
+				resolution: { value: options.resolution }
+			}
+		})
+	}
 }
