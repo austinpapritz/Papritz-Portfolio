@@ -21,4 +21,6 @@
 # Sept. 22, 2023
 
 -   11am-12pm: Walked thru `Moksha` project to practice talking about the flow of data
--   12pm: Researching "lerp" library to better understand scroll effect
+-   12pm-1: Researching "lerp" library to better understand scroll effect
+-   2pm-3pm: Playing around with prop values to better understand how to customize components
+-   3pm-4pm: Getting stuck with not having a plan. Planning session. Going to look in to `Tiles-R3F` project and combine elements from each.
