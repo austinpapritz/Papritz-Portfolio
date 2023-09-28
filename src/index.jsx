@@ -74,7 +74,7 @@ function Content() {
 			</Block>
 			{/* "four zero zero" text */}
 			<Block factor={1.2} offset={5.7}>
-				<MultilineText top left size={w * 0.15} lineHeight={w / 5} position={[-w / 3.5, 0, -1]} color="#2fe85d" text={"four\nzero\nzero"} />
+				<MultilineText top left size={w * 0.15} lineHeight={w / 5} position={[-w / 3.5, 0, -1]} color="#2fe85d" text={"hire\nme\nnow"} />
 			</Block>
 			{state.paragraphs.map((props, index) => (
 				<Paragraph key={index} index={index} {...props} image={images[index]} />
@@ -86,7 +86,7 @@ function Content() {
 			))}
 			<Block factor={1.25} offset={8}>
 				<Html style={{ color: "white" }} className="bottom-left" position={[-canvasWidth / 2, -canvasHeight / 2, 0]}>
-					Culture is not your friend.
+					Copywrite 2023
 				</Html>
 			</Block>
 		</>
