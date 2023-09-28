@@ -133,3 +133,7 @@ a:hover {
 		padding: 0 0 2rem 3.7rem;
 	}
 }
+
+.w-border {
+	border: solid white 1px;
+}

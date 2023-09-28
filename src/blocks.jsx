@@ -1,16 +1,24 @@
-import React, { createContext, useRef, useContext } from "react"
+import { Mesh, BoxBufferGeometry, MeshBasicMaterial } from "three"
+import React, { createContext, useRef, useContext, useMemo } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
 import lerp from "lerp"
 import state from "./store"
+import "./styles.css"
 
 const offsetContext = createContext(0)
 
-function Block({ children, offset, factor, ...props }) {
+function Block({ children, offset, factor, blockWidth, blockHeight, blockDepth, ...props }) {
 	const { offset: parentOffset, sectionHeight } = useBlock()
 
 	const ref = useRef()
 
 	offset = offset !== undefined ? offset : parentOffset
+
+	const borderSize = 0.05 // Adjust as needed
+	const borderColor = "white" // Adjust as needed
+
+	const geometry = useMemo(() => new BoxBufferGeometry(blockWidth, blockHeight, blockDepth), [borderSize])
+	const material = useMemo(() => new MeshBasicMaterial({ color: borderColor, wireframe: true }), [borderColor])
 
 	useFrame(() => {
 		const curY = ref.current.position.y
@@ -20,7 +28,11 @@ function Block({ children, offset, factor, ...props }) {
 	return (
 		<offsetContext.Provider value={offset}>
 			<group {...props} position={[0, -sectionHeight * offset * factor, 0]}>
-				<group ref={ref}>{children}</group>
+				<group ref={ref}>
+					{/* Create a BoxGeometry that acts as a border */}
+					<mesh geometry={geometry} material={material} />
+					{children}
+				</group>
 			</group>
 		</offsetContext.Provider>
 	)
