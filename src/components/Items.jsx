@@ -6,7 +6,7 @@ const state = proxy({
 	urls: [1, 2, 3].map((u) => `/${u}.jpg`)
 })
 
-function Items({ w = 0.7, gap = 0.15 }) {
+export function Items({ w = 0.7, gap = 0.15 }) {
 	const { urls } = useSnapshot(state)
 	const xW = w + gap
 	return (
