@@ -3,10 +3,10 @@ import { proxy, useSnapshot } from "valtio"
 
 const state = proxy({
 	clicked: null,
-	urls: [1, 2, 3].map((u) => `/${u}.jpg`)
+	urls: ["ph1", "ph3"].map((u) => `/${u}.jpg`)
 })
 
-export function Items({ w = 0.7, gap = 0.15 }) {
+export default function Items({ w = 0.7, gap = 0.15 }) {
 	const { urls } = useSnapshot(state)
 	const xW = w + gap
 	return (

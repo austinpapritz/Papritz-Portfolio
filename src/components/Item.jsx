@@ -7,7 +7,7 @@ import { useSnapshot } from "valtio"
 const damp = THREE.MathUtils.damp
 
 // Item is one tile
-export function Item({ index, position, scale, c = new THREE.Color(), ...props }) {
+export default function Item({ index, position, scale, c = new THREE.Color(), ...props }) {
 	const ref = useRef()
 	const { clicked } = useSnapshot(state)
 	const [hovered, hover] = useState(false)
