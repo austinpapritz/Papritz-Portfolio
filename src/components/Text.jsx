@@ -1,14 +1,21 @@
 import * as THREE from "three"
-const { FontLoader, Vector3, TextBufferGeometry } = THREE
-import React, { useCallback, useRef } from "react"
-import { useLoader, useFrame } from "@react-three/fiber"
+const { Vector3, TextGeometry } = THREE
+import React, { useState, useCallback, useRef, useEffect } from "react"
+import { useFrame } from "@react-three/fiber"
 import { suspend } from "suspend-react"
 import lerp from "lerp"
 import state from "../store"
 
 function Text({ children, size = 1, left, right, top, bottom, color = "white", opacity = 1, height = 0.01, layers = 0, font = "/MOONGET_Heavy.blob", ...props }) {
-	const data = useLoader(FontLoader, font)
-	const geom = suspend(() => new Promise((res) => res(new TextBufferGeometry(children, { font: data, size: 1, height, curveSegments: 32 }))), [children])
+	const [geom, setGeom] = useState(null)
+	const data = suspend(loadFont(font))
+
+	useEffect(() => {
+		if (data) {
+			setGeom(new TextGeometry(children, { font: data, size: 1, height: 0.01, curveSegments: 32 }))
+		}
+	}, [data, children])
+
 	const onUpdate = useCallback(
 		(self) => {
 			const box = new Vector3()
@@ -40,3 +47,15 @@ const MultilineText = ({ text, size = 1, lineHeight = 1, position = [0, 0, 0], .
 	text.split("\n").map((text, index) => <Text key={index} size={size} {...props} position={[position[0], position[1] - index * lineHeight, position[2]]} children={text} />)
 
 export { Text, MultilineText }
+
+async function loadFont(fontPath) {
+	const loader = new THREE.FontLoader()
+	return new Promise((resolve, reject) => {
+		loader.load(
+			fontPath,
+			(font) => resolve(font),
+			undefined,
+			(error) => reject(error)
+		)
+	})
+}

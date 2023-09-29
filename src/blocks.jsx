@@ -1,4 +1,4 @@
-import { Mesh, BoxBufferGeometry, MeshBasicMaterial } from "three"
+import { Mesh, BoxGeometry, MeshBasicMaterial } from "three"
 import React, { createContext, useRef, useContext, useMemo } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
 import lerp from "lerp"
@@ -17,7 +17,7 @@ function Block({ children, offset, factor, blockWidth, blockHeight, blockDepth, 
 	const borderSize = 0.05 // Adjust as needed
 	const borderColor = "white" // Adjust as needed
 
-	const geometry = useMemo(() => new BoxBufferGeometry(blockWidth, blockHeight, blockDepth), [borderSize])
+	const geometry = useMemo(() => new BoxGeometry(blockWidth, blockHeight, blockDepth), [borderSize])
 	const material = useMemo(() => new MeshBasicMaterial({ color: borderColor, wireframe: true }), [borderColor])
 
 	useFrame(() => {
