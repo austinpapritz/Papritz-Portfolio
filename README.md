@@ -31,4 +31,5 @@
 -   bio portion could show climbing/trail running, anatomy academy and coaching?
 -   Freeze diamond animation
 -   floating nav minimap to jump to projects
--   Each Project paragraph should be a Tile that has tech-stack icons and screenshot of app. There should be a link to the github somewhere and deployable, if there is one. The tile should be expandable on click with a nice animation.
+-   Convert Paragraph to dynamic tile component
+    -   Each Project paragraph should be a Tile that has tech-stack icons and screenshot of app. There should be a link to the github somewhere and deployable, if there is one. The tile should be expandable on click with a nice animation.
