@@ -1,5 +1,6 @@
 import * as THREE from "three"
 const { Vector3, TextGeometry } = THREE
+import { FontLoader } from "three/addons/loaders/FontLoader.js"
 import React, { useState, useCallback, useRef, useEffect } from "react"
 import { useFrame } from "@react-three/fiber"
 import { suspend } from "suspend-react"
@@ -8,7 +9,8 @@ import state from "../store"
 
 function Text({ children, size = 1, left, right, top, bottom, color = "white", opacity = 1, height = 0.01, layers = 0, font = "/MOONGET_Heavy.blob", ...props }) {
 	const [geom, setGeom] = useState(null)
-	const data = suspend(loadFont(font))
+	const loadedFont = loadFont(font)
+	const data = suspend(loadedFont)
 
 	useEffect(() => {
 		if (data) {
@@ -49,7 +51,7 @@ const MultilineText = ({ text, size = 1, lineHeight = 1, position = [0, 0, 0], .
 export { Text, MultilineText }
 
 async function loadFont(fontPath) {
-	const loader = new THREE.FontLoader()
+	const loader = new FontLoader()
 	return new Promise((resolve, reject) => {
 		loader.load(
 			fontPath,
