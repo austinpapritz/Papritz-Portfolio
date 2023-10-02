@@ -4,16 +4,12 @@ import { FontLoader } from "three/addons/loaders/FontLoader.js"
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
 import React, { useCallback, useRef } from "react"
 import { useFrame, useLoader } from "@react-three/fiber"
-import { suspend } from "suspend-react"
 import lerp from "lerp"
 import state from "../store"
 
 function Text({ children, size = 1, left, right, top, bottom, color = "white", opacity = 1, height = 0.01, layers = 0, font = "/MOONGET_Heavy.blob", ...props }) {
 	const data = useLoader(FontLoader, font)
-	const geom = suspend(async () => {
-		const res = await fetch(new TextGeometry(children, { font: data, size: 1, height, curveSegments: 32 }))
-		return res
-	}, [children])
+	const geom = new TextGeometry(children, { font: data, size: 1, height, curveSegments: 32 })
 
 	const onUpdate = useCallback(
 		(self) => {
@@ -35,11 +31,9 @@ function Text({ children, size = 1, left, right, top, bottom, color = "white", o
 
 	return (
 		<group {...props} scale={[size, size, 0.1]}>
-			{geom && (
-				<mesh geometry={geom} frustumCulled={false}>
-					<customMaterial ref={ref} color={color} transparent opacity={opacity} />
-				</mesh>
-			)}
+			<mesh geometry={geom} onUpdate={onUpdate} frustumCulled={false}>
+				<customMaterial ref={ref} color={color} transparent opacity={opacity} />
+			</mesh>
 		</group>
 	)
 }
