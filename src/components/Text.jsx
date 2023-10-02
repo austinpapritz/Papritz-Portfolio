@@ -14,6 +14,7 @@ function Text({ children, size = 1, left, right, top, bottom, color = "white", o
 		const res = await fetch(new TextGeometry(children, { font: data, size: 1, height, curveSegments: 32 }))
 		return res
 	}, [children])
+	console.log("geom", geom)
 
 	const onUpdate = useCallback(
 		(self) => {
@@ -35,9 +36,11 @@ function Text({ children, size = 1, left, right, top, bottom, color = "white", o
 
 	return (
 		<group {...props} scale={[size, size, 0.1]}>
-			<mesh geometry={geom} onUpdate={onUpdate} frustumCulled={false}>
-				<customMaterial ref={ref} color={color} transparent opacity={opacity} />
-			</mesh>
+			{geom && (
+				<mesh geometry={geom} frustumCulled={false}>
+					<customMaterial ref={ref} color={color} transparent opacity={opacity} />
+				</mesh>
+			)}
 		</group>
 	)
 }
