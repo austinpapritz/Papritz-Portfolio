@@ -11,7 +11,7 @@ import state from "../store"
 const dummy = new Object3D()
 export default function Diamonds() {
 	const { nodes } = useLoader(GLTFLoader, "/diamond.glb")
-	console.log("nodes", nodes)
+
 	useLayoutEffect(() => {
 		nodes.pCone1_lambert1_0.geometry.center()
 		return undefined
