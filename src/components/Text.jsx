@@ -14,7 +14,6 @@ function Text({ children, size = 1, left, right, top, bottom, color = "white", o
 		const res = await fetch(new TextGeometry(children, { font: data, size: 1, height, curveSegments: 32 }))
 		return res
 	}, [children])
-	console.log("geom", geom)
 
 	const onUpdate = useCallback(
 		(self) => {
