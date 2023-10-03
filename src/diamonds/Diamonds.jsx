@@ -48,10 +48,6 @@ export default function Diamonds() {
 			dummy.updateMatrix()
 			model.current.setMatrixAt(i, dummy.matrix)
 			model.current.instanceMatrix.needsUpdate = true
-			// if (model.current.position.z < 500) {
-			// 	model.current.position.z += 10
-			// }
-			console.log("model.current.position.z", model.current.position.z)
 		})
 
 		gl.autoClear = false
