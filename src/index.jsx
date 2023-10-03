@@ -13,6 +13,13 @@ import { Block, useBlock } from "./blocks"
 import state from "./store"
 import "./styles.css"
 
+import { proxy } from "valtio"
+
+const tileState = proxy({
+	clicked: null,
+	urls: ["ph1", "ph3"].map((u) => `/${u}.jpg`)
+})
+
 // A Plane geometry that fades out in front of camera to give the illusion of a cinematic transition
 function Startup() {
 	const ref = useRef()
@@ -77,7 +84,7 @@ function Content() {
 					<Text left size={w * 0.16} position={[-w / 2.5, -1, -1]} color="#d40733">
 						PAPRITZ
 					</Text> */}
-					<Items />
+					{/* <Items /> */}
 				</Block>
 				<Block factor={1.0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 					<Html className="bottom-left" style={{ color: "white" }} position={[-canvasWidth / 2, -canvasHeight / 2, 0]}>
@@ -109,13 +116,22 @@ function Content() {
 function App() {
 	const scrollArea = useRef()
 	const onScroll = (e) => (state.top.current = e.target.scrollTop)
-	useEffect(() => void onScroll({ target: scrollArea.current }), [])
+	useEffect(() => {
+		void onScroll({ target: scrollArea.current })
+	}, [])
 	return (
 		<>
-			<Canvas linear dpr={[1, 2]} orthographic camera={{ zoom: state.zoom, position: [0, 0, 500] }}>
+			<Canvas
+				gl={{ antialias: false }}
+				linear
+				dpr={[1, 2]}
+				orthographic
+				camera={{ zoom: state.zoom, position: [0, 0, 500] }}
+				onPointerMissed={() => (tileState.clicked = null)}>
 				<Suspense fallback={<Html center className="loading" children="Loading..." />}>
 					<Content />
 					{/* <Diamonds /> */}
+					<Items />
 					<Startup />
 				</Suspense>
 			</Canvas>

@@ -4,7 +4,7 @@ import { useFrame } from "@react-three/fiber"
 import { Image } from "@react-three/drei"
 import { proxy, useSnapshot } from "valtio"
 
-const state = proxy({
+const tileState = proxy({
 	clicked: null,
 	urls: ["ph1", "ph3"].map((u) => `/${u}.jpg`)
 })
@@ -14,11 +14,20 @@ const damp = THREE.MathUtils.damp
 // Item is one tile
 export default function Item({ index, position, scale, c = new THREE.Color(), ...props }) {
 	const ref = useRef()
-	const { clicked } = useSnapshot(state)
+	const { clicked } = useSnapshot(tileState)
 	const [hovered, hover] = useState(false)
-	const click = () => (state.clicked = index === clicked ? null : index)
-	const over = () => hover(true)
-	const out = () => hover(false)
+	const click = () => {
+		console.log("Item clicked:", index)
+		tileState.clicked = index === clicked ? null : index
+	}
+	const over = () => {
+		console.log("Mouse over item:", index)
+		hover(true)
+	}
+	const out = () => {
+		console.log("Mouse out of item:", index)
+		hover(false)
+	}
 	const y = 5
 	useFrame((state, delta) => {
 		// Adjust the scale and grayscale of the item based on whether it is clicked, hovered, or in view.
@@ -27,7 +36,23 @@ export default function Item({ index, position, scale, c = new THREE.Color(), ..
 		// Adjust the position of items when an item is clicked.
 		adjustItemPosition(ref, position, clicked, index, delta)
 	})
-	return <Image ref={ref} {...props} position={position} scale={scale} onClick={click} onPointerOver={over} onPointerOut={out} />
+	return (
+		<Image
+			ref={ref}
+			{...props}
+			position={position}
+			scale={scale}
+			onClick={() => {
+				console.log("Direct click:", index)
+			}}
+			onPointerOver={() => {
+				console.log("Direct hover:", index)
+			}}
+			onPointerOut={() => {
+				console.log("Direct out:", index)
+			}}
+		/>
+	)
 }
 
 function adjustItemAppearance(ref, y, clicked, index, hovered, delta, color, scale) {
