@@ -29,18 +29,24 @@ function Paragraph({ image, index, offset, factor, header, aspect, text }) {
 	const color = index % 2 ? "#d40733" : "#2fe85d"
 	const defaultDepth = 1
 	return (
+		// Block containing all paragraphs
 		<Block factor={factor} offset={offset} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 			<group position={[left ? -alignRight : alignRight, 0, 0]}>
+				{/* Plane component for image */}
 				<Plane map={image} args={[1, 1, 32, 32]} shift={200} size={size} aspect={aspect} scale={[w * size, (w * size) / aspect, 1]} frustumCulled={false} />
+				{/* Html component for text body */}
 				<Html
 					style={{ width: pixelWidth / (mobile ? 1 : 2), textAlign: left ? "left" : "right" }}
 					position={[left || mobile ? (-w * size) / 2 : 0, (-w * size) / 2 / aspect - 0.4, 1]}>
 					<div tabIndex={index}>{text}</div>
 				</Html>
+				{/* Text component for header */}
 				<Text left={left} right={!left} size={w * 0.04} color={color} top position={[((left ? -w : w) * size) / 2, (w * size) / aspect / 2 + 0.5, -1]}>
 					{header}
 				</Text>
+				{/* Block for large numbers in bg */}
 				<Block factor={0.2} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
+					{/* Large numbers text */}
 					<Text opacity={0.5} size={w * 0.5} color="#1A1E2A" position={[((left ? w : -w) / 2) * size, (w * size) / aspect / 1, -10]}>
 						{"0" + (index + 1)}
 					</Text>
