@@ -71,12 +71,13 @@ function Content() {
 			{/* Block for Name and Position */}
 			<Block factor={1} offset={0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 				<Block factor={1.2} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
-					<Text left size={w * 0.16} position={[-w / 2.5, 3, -1]} color="#d40733">
+					{/* <Text left size={w * 0.16} position={[-w / 2.5, 3, -1]} color="#d40733">
 						AUSTIN
 					</Text>
 					<Text left size={w * 0.16} position={[-w / 2.5, -1, -1]} color="#d40733">
 						PAPRITZ
-					</Text>
+					</Text> */}
+					<Items />
 				</Block>
 				<Block factor={1.0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 					<Html className="bottom-left" style={{ color: "white" }} position={[-canvasWidth / 2, -canvasHeight / 2, 0]}>

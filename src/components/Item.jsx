@@ -2,7 +2,12 @@ import * as THREE from "three"
 import { useRef, useState } from "react"
 import { useFrame } from "@react-three/fiber"
 import { Image } from "@react-three/drei"
-import { useSnapshot } from "valtio"
+import { proxy, useSnapshot } from "valtio"
+
+const state = proxy({
+	clicked: null,
+	urls: ["ph1", "ph3"].map((u) => `/${u}.jpg`)
+})
 
 const damp = THREE.MathUtils.damp
 
