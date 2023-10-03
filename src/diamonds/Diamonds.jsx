@@ -42,7 +42,7 @@ export default function Diamonds() {
 			data.pos.set(mobile ? 0 : x, lerp(data.pos.y, -sectionHeight * offset * factor + (state.top.current / state.zoom) * factor, 0.1), -35)
 			model.current.position.z = 400
 			dummy.position.copy(data.pos)
-			if (i === state.diamonds.length - 1) dummy.rotation.set(0, t, -15)
+			if (i === state.diamonds.length - 1) dummy.rotation.set(0, t + 10, -15)
 			else dummy.rotation.set(t, t, t)
 			dummy.scale.set(s, s, s)
 			dummy.updateMatrix()
