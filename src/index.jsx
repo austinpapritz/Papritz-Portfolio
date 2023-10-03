@@ -29,7 +29,7 @@ function Paragraph({ image, index, offset, factor, header, aspect, text }) {
 	const color = index % 2 ? "#d40733" : "#2fe85d"
 	const defaultDepth = 1
 	return (
-		// Block containing all paragraphs
+		// Block containing entire paragraph
 		<Block factor={factor} offset={offset} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 			<group position={[left ? -alignRight : alignRight, 0, 0]}>
 				{/* Plane component for image */}
@@ -68,12 +68,13 @@ function Content() {
 	const { contentMaxWidth: w, canvasWidth, canvasHeight, mobile } = useBlock()
 	return (
 		<>
+			{/* Block for Name and Position */}
 			<Block factor={1} offset={0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 				<Block factor={1.2} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
-					<Text left size={w * 0.15} position={[-w / 3.2, 4, -1]} color="#d40733">
+					<Text left size={w * 0.16} position={[-w / 2.5, 3, -1]} color="#d40733">
 						AUSTIN
 					</Text>
-					<Text left size={w * 0.15} position={[-w / 3.2, 0.5, -1]} color="#d40733">
+					<Text left size={w * 0.16} position={[-w / 2.5, -1, -1]} color="#d40733">
 						PAPRITZ
 					</Text>
 				</Block>
@@ -83,7 +84,7 @@ function Content() {
 					</Html>
 				</Block>
 			</Block>
-			{/* "four zero zero" text */}
+			{/* Block for "hire me now" text */}
 			<Block factor={1.2} offset={5.7} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 				<MultilineText top left size={w * 0.15} lineHeight={w / 5} position={[-w / 3.5, 0, -1]} color="#2fe85d" text={"hire\nme\nnow"} />
 			</Block>
@@ -113,7 +114,7 @@ function App() {
 			<Canvas linear dpr={[1, 2]} orthographic camera={{ zoom: state.zoom, position: [0, 0, 500] }}>
 				<Suspense fallback={<Html center className="loading" children="Loading..." />}>
 					<Content />
-					<Diamonds />
+					{/* <Diamonds /> */}
 					<Startup />
 				</Suspense>
 			</Canvas>
