@@ -39,7 +39,8 @@ export default function Diamonds() {
 			const t = clock.getElapsedTime() / 2
 			const { x, offset, scale, factor } = data
 			const s = (contentMaxWidth / 35) * scale
-			data.pos.set(mobile ? 0 : x, lerp(data.pos.y, -sectionHeight * offset * factor + (state.top.current / state.zoom) * factor, 0.1), 0)
+			data.pos.set(mobile ? 0 : x, lerp(data.pos.y, -sectionHeight * offset * factor + (state.top.current / state.zoom) * factor, 0.1), -35)
+			model.current.position.z = 503
 			dummy.position.copy(data.pos)
 			if (i === state.diamonds.length - 1) dummy.rotation.set(0, t, 0)
 			else dummy.rotation.set(t, t, t)
@@ -47,6 +48,10 @@ export default function Diamonds() {
 			dummy.updateMatrix()
 			model.current.setMatrixAt(i, dummy.matrix)
 			model.current.instanceMatrix.needsUpdate = true
+			// if (model.current.position.z < 500) {
+			// 	model.current.position.z += 10
+			// }
+			console.log("model.current.position.z", model.current.position.z)
 		})
 
 		gl.autoClear = false
