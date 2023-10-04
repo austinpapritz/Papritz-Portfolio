@@ -106,7 +106,7 @@ function App() {
 			<Canvas linear dpr={[1, 2]} orthographic camera={{ zoom: state.zoom, position: [0, 0, 500] }}>
 				<Suspense fallback={<Html center className="loading" children="Loading..." />}>
 					<Content />
-					<Diamonds />
+					{/* <Diamonds /> */}
 					<Startup />
 				</Suspense>
 			</Canvas>
