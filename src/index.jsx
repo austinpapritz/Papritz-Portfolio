@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client"
 import React, { Suspense, useEffect, useRef, useMemo } from "react"
-import { Canvas, useLoader, useFrame } from "@react-three/fiber"
-import { Html } from "@react-three/drei"
+import { Canvas, useLoader, useFrame, useThree } from "@react-three/fiber"
+import { Html, Scroll, useScroll, ScrollControls } from "@react-three/drei"
 import { TextureLoader, LinearFilter } from "three"
 import lerp from "lerp"
 
@@ -77,6 +77,7 @@ function Content() {
 		<>
 			{/* Block for Name and Position */}
 			<Block factor={1} offset={0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
+				{/* Block for Name */}
 				<Block factor={1.2} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 					{/* <Text left size={w * 0.16} position={[-w / 2.5, 3, -1]} color="#d40733">
 						AUSTIN
@@ -84,8 +85,9 @@ function Content() {
 					<Text left size={w * 0.16} position={[-w / 2.5, -1, -1]} color="#d40733">
 						PAPRITZ
 					</Text> */}
-					{/* <Items /> */}
+					<Items />
 				</Block>
+				{/* Block for Current Position */}
 				<Block factor={1.0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 					<Html className="bottom-left" style={{ color: "white" }} position={[-canvasWidth / 2, -canvasHeight / 2, 0]}>
 						Full Stack Software Engineer{mobile ? <br /> : " "}React || ASP.NET Core
@@ -96,14 +98,17 @@ function Content() {
 			<Block factor={1.2} offset={5.7} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 				<MultilineText top left size={w * 0.15} lineHeight={w / 5} position={[-w / 3.5, 0, -1]} color="#2fe85d" text={"hire\nme\nnow"} />
 			</Block>
+			{/* Paragraph component for each image? */}
 			{state.paragraphs.map((props, index) => (
 				<Paragraph key={index} index={index} {...props} image={images[index]} />
 			))}
+			{/* Background stripes */}
 			{state.stripes.map(({ offset, color, height }, index) => (
 				<Block key={index} factor={-1.5} offset={offset} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 					<Plane args={[50, height, 32, 32]} shift={-4} color={color} rotation={[0, 0, Math.PI / 8]} position={[0, 0, -10]} />
 				</Block>
 			))}
+			{/* Ending copywrite block */}
 			<Block factor={1.25} offset={8} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 				<Html style={{ color: "white" }} className="bottom-left" position={[-canvasWidth / 2, -canvasHeight / 2, 0]}>
 					Copywrite 2023
@@ -113,33 +118,41 @@ function Content() {
 	)
 }
 
-function App() {
-	const scrollArea = useRef()
-	const onScroll = (e) => (state.top.current = e.target.scrollTop)
-	useEffect(() => {
-		void onScroll({ target: scrollArea.current })
-	}, [])
+function Experience() {
+	const { offset } = useScroll()
+	const totalHeight = 6811
+	state.top.current = offset * totalHeight
+
 	return (
 		<>
-			<Canvas
-				gl={{ antialias: false }}
-				linear
-				dpr={[1, 2]}
-				orthographic
-				camera={{ zoom: state.zoom, position: [0, 0, 500] }}
-				onPointerMissed={() => (tileState.clicked = null)}>
+			<Content />
+			{/* <Diamonds /> */}
+			{/* <Startup /> */}
+		</>
+	)
+}
+
+function ScrollComponent() {
+	const { height } = useThree((s) => s.viewport)
+	return (
+		<>
+			<ScrollControls vertical damping={0.1} pages={state.pages}>
+				<Scroll>
+					<Experience />
+				</Scroll>
+			</ScrollControls>
+		</>
+	)
+}
+
+function App() {
+	return (
+		<>
+			<Canvas gl={{ antialias: false }} dpr={[1, 1.5]} onPointerMissed={() => (tileState.clicked = null)}>
 				<Suspense fallback={<Html center className="loading" children="Loading..." />}>
-					<Content />
-					{/* <Diamonds /> */}
-					<Items />
-					<Startup />
+					<ScrollComponent />
 				</Suspense>
 			</Canvas>
-			<div className="scrollArea" ref={scrollArea} onScroll={onScroll}>
-				{new Array(state.sections).fill().map((_, index) => (
-					<div key={index} id={"0" + index} style={{ height: `${(state.pages / state.sections) * 100}vh` }} />
-				))}
-			</div>
 		</>
 	)
 }
