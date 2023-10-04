@@ -14,9 +14,9 @@ function Block({ children, offset, factor, blockWidth, blockHeight, blockDepth, 
 
 	offset = offset !== undefined ? offset : parentOffset
 
-	const borderSize = 0.05 // Adjust as needed
-	const borderColor = "white" // Adjust as needed
-
+	// White borders to help visualize blocks
+	const borderSize = 0.05
+	const borderColor = "white"
 	const geometry = useMemo(() => new BoxBufferGeometry(blockWidth, blockHeight, blockDepth), [borderSize])
 	const material = useMemo(() => new MeshBasicMaterial({ color: borderColor, wireframe: true }), [borderColor])
 
