@@ -47,7 +47,6 @@ export default function Diamonds() {
 			dummy.updateMatrix()
 			model.current.setMatrixAt(i, dummy.matrix)
 			model.current.instanceMatrix.needsUpdate = true
-			const elapsedTime = clock.getElapsedTime()
 		})
 
 		gl.autoClear = false
