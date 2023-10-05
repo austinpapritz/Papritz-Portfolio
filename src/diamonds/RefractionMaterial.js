@@ -18,6 +18,7 @@ export default class RefractionMaterial extends ShaderMaterial {
       }`,
 			fragmentShader: `uniform sampler2D envMap;
       uniform sampler2D backfaceMap;
+      uniform float refraction;
       uniform vec2 resolution;
       varying vec3 worldNormal;
       varying vec3 viewDirection;
@@ -27,17 +28,15 @@ export default class RefractionMaterial extends ShaderMaterial {
       void main() {
         vec2 uv = gl_FragCoord.xy / resolution;
         vec3 normal = worldNormal * (1.0 - 0.7) - texture2D(backfaceMap, uv).rgb * 0.7;
-        vec4 color = texture2D(envMap, uv += refract(viewDirection, normal, 1.0/1.5).xy);
-        //gl_FragColor = vec4(mix(color.rgb, vec3(0.15), fresnelFunc(viewDirection, normal)), 1.0);
+        vec4 color = texture2D(envMap, uv += refract(viewDirection, normal, 1.0/refraction).xy);
         gl_FragColor = vec4(mix(color.rgb, vec3(0.4), fresnelFunc(viewDirection, normal)), 1.0);
-        gl_FragColor = vec4(mix(color.rgb, vec3(0.4), fresnelFunc(viewDirection, normal)), 1.0) * opacity;
 
       }`,
 			uniforms: {
 				envMap: { value: options.envMap },
 				backfaceMap: { value: options.backfaceMap },
 				resolution: { value: options.resolution },
-				opacity: { value: 1.0 }
+				refraction: { value: 1.0 }
 			}
 		})
 	}
