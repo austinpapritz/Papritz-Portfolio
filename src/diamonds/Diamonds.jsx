@@ -11,7 +11,11 @@ import state from "../store"
 const dummy = new Object3D()
 export default function Diamonds() {
 	const { nodes } = useLoader(GLTFLoader, "/diamond.glb")
-	useLayoutEffect(() => nodes.pCone1_lambert1_0.geometry.center(), [])
+
+	useLayoutEffect(() => {
+		nodes.pCone1_lambert1_0.geometry.center()
+		return undefined
+	}, [])
 
 	const { size, gl, scene, camera, clock } = useThree()
 	const { contentMaxWidth, sectionHeight, mobile } = useBlock()
@@ -35,9 +39,10 @@ export default function Diamonds() {
 			const t = clock.getElapsedTime() / 2
 			const { x, offset, scale, factor } = data
 			const s = (contentMaxWidth / 35) * scale
-			data.pos.set(mobile ? 0 : x, lerp(data.pos.y, -sectionHeight * offset * factor + (state.top.current / state.zoom) * factor, 0.1), 0)
+			data.pos.set(mobile ? 0 : x, lerp(data.pos.y, -sectionHeight * offset * factor + (state.top.current / state.zoom) * factor, 0.1), -35)
+			model.current.position.z = 400
 			dummy.position.copy(data.pos)
-			if (i === state.diamonds.length - 1) dummy.rotation.set(0, t, 0)
+			if (i === state.diamonds.length - 1) dummy.rotation.set(0, t + 10, -15)
 			else dummy.rotation.set(t, t, t)
 			dummy.scale.set(s, s, s)
 			dummy.updateMatrix()
