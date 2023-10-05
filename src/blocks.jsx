@@ -1,11 +1,13 @@
-import React, { createContext, useRef, useContext } from "react"
+import { BoxGeometry, MeshBasicMaterial } from "three"
+import React, { createContext, useRef, useContext, useMemo } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
 import lerp from "lerp"
 import state from "./store"
+import "./styles.css"
 
 const offsetContext = createContext(0)
 
-function Block({ children, offset, factor, ...props }) {
+function Block({ children, offset, factor, blockWidth, blockHeight, blockDepth, ...props }) {
 	const { offset: parentOffset, sectionHeight } = useBlock()
 
 	const ref = useRef()
