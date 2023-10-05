@@ -17,13 +17,9 @@ export default class BackfaceMaterial extends ShaderMaterial {
 			fragmentShader: `varying vec3 worldNormal;
       void main() {
         gl_FragColor = vec4(worldNormal, 1.0);
-        gl_FragColor = vec4(worldNormal, 1.0) * opacity;
 
       }`,
-			side: BackSide,
-			uniforms: {
-				opacity: { value: 1.0 }
-			}
+			side: BackSide
 		})
 	}
 }
