@@ -2,9 +2,9 @@ import { ShaderMaterial, Color } from "three"
 import { extend } from "@react-three/fiber"
 
 class CustomMaterial extends ShaderMaterial {
-  constructor() {
-    super({
-      vertexShader: `uniform float scale;
+	constructor() {
+		super({
+			vertexShader: `uniform float scale;
       uniform float shift;
       varying vec2 vUv;
       void main() {
@@ -13,7 +13,7 @@ class CustomMaterial extends ShaderMaterial {
         vUv = uv;
         gl_Position = projectionMatrix * modelViewMatrix * vec4(pos,1.);
       }`,
-      fragmentShader: `uniform sampler2D tex;
+			fragmentShader: `uniform sampler2D tex;
       uniform float hasTexture;
       uniform float shift;
       uniform float scale;
@@ -30,53 +30,53 @@ class CustomMaterial extends ShaderMaterial {
         if (hasTexture == 1.0) gl_FragColor = vec4(cr.r, cga.g, cb.b, cga.a);
         else gl_FragColor = vec4(color, opacity);
       }`,
-      uniforms: {
-        tex: { value: null },
-        hasTexture: { value: 0 },
-        scale: { value: 0 },
-        shift: { value: 0 },
-        opacity: { value: 1 },
-        color: { value: new Color("white") }
-      }
-    })
-  }
+			uniforms: {
+				tex: { value: null },
+				hasTexture: { value: 0 },
+				scale: { value: 0 },
+				shift: { value: 0 },
+				opacity: { value: 1 },
+				color: { value: new Color("white") }
+			}
+		})
+	}
 
-  set scale(value) {
-    this.uniforms.scale.value = value
-  }
+	set scale(value) {
+		this.uniforms.scale.value = value
+	}
 
-  get scale() {
-    return this.uniforms.scale.value
-  }
+	get scale() {
+		return this.uniforms.scale.value
+	}
 
-  set shift(value) {
-    this.uniforms.shift.value = value
-  }
+	set shift(value) {
+		this.uniforms.shift.value = value
+	}
 
-  get shift() {
-    return this.uniforms.shift.value
-  }
+	get shift() {
+		return this.uniforms.shift.value
+	}
 
-  set map(value) {
-    this.uniforms.hasTexture.value = !!value
-    this.uniforms.tex.value = value
-  }
+	set map(value) {
+		this.uniforms.hasTexture.value = !!value
+		this.uniforms.tex.value = value
+	}
 
-  get map() {
-    return this.uniforms.tex.value
-  }
+	get map() {
+		return this.uniforms.tex.value
+	}
 
-  get color() {
-    return this.uniforms.color.value
-  }
+	get color() {
+		return this.uniforms.color.value
+	}
 
-  get opacity() {
-    return this.uniforms.opacity.value
-  }
+	get opacity() {
+		return this.uniforms.opacity.value
+	}
 
-  set opacity(value) {
-    if (this.uniforms) this.uniforms.opacity.value = value
-  }
+	set opacity(value) {
+		if (this.uniforms) this.uniforms.opacity.value = value
+	}
 }
 
 extend({ CustomMaterial })

@@ -2,71 +2,58 @@ import { createRef } from "react"
 import { Vector3 } from "three"
 
 const state = {
-  sections: 9,
-  pages: 8,
-  zoom: 75,
-  paragraphs: [
-    {
-      offset: 1,
-      factor: 1.75,
-      header: "District 4",
-      image: "/photo-1515036551567-bf1198cccc35.jpeg",
-      aspect: 1.51,
-      text: "Two thousand pharmacologists and bio-chemists were subsidized. Six years later it was being produced commercially."
-    },
-    {
-      offset: 2,
-      factor: 2.0,
-      header: "Diamond Road",
-      image: "/photo-1519608487953-e999c86e7455.jpeg",
-      aspect: 1.5,
-      text:
-        "The man who comes back through the Door in the Wall will never be quite the same as the man who went out. He will be wiser but less sure, happier but less self-satisfied, humbler in acknowledging his ignorance yet better equipped to understand the relationship of words to things, of systematic reasoning to the unfathomable mystery which it tries, forever vainly, to comprehend."
-    },
-    {
-      offset: 3,
-      factor: 2.25,
-      header: "Catalina",
-      image: "/ph1.jpg",
-      aspect: 1.5037,
-      text:
-        "The substance can take you to heaven but it can also take you to hell. Or else to both, together or alternately. Or else (if you're lucky, or if you've made yourself ready) beyond either of them. And then beyond the beyond, back to where you started from — back to here, back to New Rotham sted, back to business as usual. Only now, of course, business as usual is completely different."
-    },
-    {
-      offset: 4,
-      factor: 2.0,
-      header: "Building 21",
-      image: "/ph3.jpg",
-      aspect: 0.665,
-      text:
-        "We’ve found that the people whose EEG doesn’t show any alpha-wave activity when they’re relaxed aren’t likely to respond significantly to the substance. That means that, for about fifteen percent of the population, we have to find other approaches to liberation."
-    },
-    {
-      offset: 5,
-      factor: 1.75,
-      header: "Sector 8",
-      image: "/photo-1533577116850-9cc66cad8a9b.jpeg",
-      aspect: 1.55,
-      text:
-        "By cultivating the state of mind that makes it possible for the dazzling ecstatic insights to become permanent and habitual illuminations. By getting to know oneself to the point where one won’t be compelled by one’s unconscious to do all the ugly, absurd, self-stultifying things that one so often finds oneself doing."
-    },
-    { offset: 7, factor: 1.05, header: "The Factory", image: "/photo-1548191265-cc70d3d45ba1.jpeg", aspect: 1.77, text: "Education and enlightenment." }
-  ],
-  stripes: [
-    { offset: 0, color: "#000", height: 13 },
-    { offset: 6.3, color: "#000", height: 20 }
-  ],
-  diamonds: [
-    { x: 0, offset: 0.15, pos: new Vector3(), scale: 14, factor: 4 },
-    { x: 2, offset: 1.1, pos: new Vector3(), scale: 1.8, factor: 2.1 },
-    { x: -5, offset: 2, pos: new Vector3(), scale: 1.8, factor: 2.5 },
-    { x: 0, offset: 3.2, pos: new Vector3(), scale: 1.8, factor: 1.75 },
-    { x: 0, offset: 4, pos: new Vector3(), scale: 1.8, factor: 2.5 },
-    { x: 2, offset: 5.5, pos: new Vector3(), scale: 2.25, factor: 0.85 },
-    { x: -5, offset: 7, pos: new Vector3(), scale: 1.8, factor: 2 },
-    { x: 0, offset: 8, pos: new Vector3(), scale: 2.5, factor: 6 }
-  ],
-  top: createRef()
+	sections: 9,
+	pages: 8,
+	zoom: 75,
+	paragraphs: [
+		{
+			offset: 1,
+			factor: 1.75,
+			header: "Bio",
+			image: "/climbing.jpg",
+			aspect: 0.8,
+			text: "Dynamic and driven developer, motivated to solve big problems and work in communication-centered teams. Avid climber and runner."
+		},
+		{
+			offset: 2,
+			factor: 2.0,
+			header: "Pokédex Search",
+			image: "/pokedex_search_ss.png",
+			aspect: 1.5,
+			text: "The Pokédex Web Application presents users with an intuitive UI to search for Pokémon cards. The user can search Pokémon by name or type, then adding or removing a Pokémon from their personalized lineup with one click."
+		},
+		{
+			offset: 3,
+			factor: 2.25,
+			header: "Tic Tac Toe",
+			image: "/tic-tac-toe-ss.jpg",
+			aspect: 1.5,
+			text: "Come take a trip thru liminal hyperspace and enjoy a game of tic-tac-toe. Context provider tracks the turn order, calculates the win conditions, and processes the display messages."
+		},
+		{
+			offset: 4,
+			factor: 2.0,
+			header: "Pierres Tasty Treats",
+			image: "/Habanero-Potato-Empanada.jpg",
+			aspect: 1.5,
+			text: "Pierre's Tasty Treats is a web app that allows users to see what new treats and flavor combos are in the works at Pierre's Bakery. Admins can easily add, edit, and delete new treats and flavors."
+		},
+		{
+			offset: 5,
+			factor: 1.75,
+			header: "Tech Stack",
+			image: "/tech-stack.jpg",
+			aspect: 1.5,
+			text: "{Tech stack icons}"
+		},
+		{ offset: 7, factor: 1.05, header: "Contact", image: "/headshot.jpeg", aspect: 1.5, text: "{LinkedIn. GitHub. Email.}" }
+	],
+	stripes: [
+		{ offset: 0, color: "#123", height: 13 },
+		{ offset: 6.3, color: "#123", height: 20 }
+	],
+	diamonds: [{ x: 0, offset: 0.04, pos: new Vector3(), scale: 12, factor: 6 }],
+	top: createRef()
 }
 
 export default state
