@@ -14,12 +14,6 @@ function Block({ children, offset, factor, blockWidth, blockHeight, blockDepth, 
 
 	offset = offset !== undefined ? offset : parentOffset
 
-	// const borderSize = 0.05 // Adjust as needed
-	// const borderColor = "white" // Adjust as needed
-
-	// const geometry = useMemo(() => new BoxGeometry(blockWidth, blockHeight, blockDepth), [borderSize])
-	// const material = useMemo(() => new MeshBasicMaterial({ color: borderColor, wireframe: true }), [borderColor])
-
 	useFrame(() => {
 		const curY = ref.current.position.y
 		const curTop = state.top.current
@@ -28,11 +22,7 @@ function Block({ children, offset, factor, blockWidth, blockHeight, blockDepth, 
 	return (
 		<offsetContext.Provider value={offset}>
 			<group {...props} position={[0, -sectionHeight * offset * factor, 0]}>
-				<group ref={ref}>
-					{/* Create a BoxGeometry that acts as a border */}
-					{/* <mesh geometry={geometry} material={material} /> */}
-					{children}
-				</group>
+				<group ref={ref}>{children}</group>
 			</group>
 		</offsetContext.Provider>
 	)
