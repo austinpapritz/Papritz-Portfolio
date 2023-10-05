@@ -34,7 +34,7 @@ const state = {
 			offset: 4,
 			factor: 2.0,
 			header: "Pierres Tasty Treats",
-			image: "/tasties_ss.png",
+			image: "/Habanero-Potato-Empanada.jpg",
 			aspect: 1.5,
 			text: "Pierre's Tasty Treats is a web app that allows users to see what new treats and flavor combos are in the works at Pierre's Bakery. Admins can easily add, edit, and delete new treats and flavors."
 		},
