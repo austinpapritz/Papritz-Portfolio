@@ -8,17 +8,9 @@ import lerp from "lerp"
 import { Text, MultilineText } from "./components/Text"
 import Diamonds from "./diamonds/Diamonds"
 import Plane from "./components/Plane"
-import Items from "./components/Items.jsx"
 import { Block, useBlock } from "./blocks"
 import state from "./store"
 import "./styles.css"
-
-import { proxy } from "valtio"
-
-const tileState = proxy({
-	clicked: null,
-	urls: ["ph1", "ph3"].map((u) => `/${u}.jpg`)
-})
 
 // A Plane geometry that fades out in front of camera to give the illusion of a cinematic transition
 function Startup() {
@@ -78,13 +70,12 @@ function Content() {
 			{/* Block for Name and Position */}
 			<Block factor={1} offset={0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 				<Block factor={1.2} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
-					{/* <Text left size={w * 0.16} position={[-w / 2.5, 3, -1]} color="#d40733">
+					<Text left size={w * 0.16} position={[-w / 2.5, 3, -1]} color="#d40733">
 						AUSTIN
 					</Text>
 					<Text left size={w * 0.16} position={[-w / 2.5, -1, -1]} color="#d40733">
 						PAPRITZ
-					</Text> */}
-					{/* <Items /> */}
+					</Text>
 				</Block>
 				<Block factor={1.0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 					<Html className="bottom-left" style={{ color: "white" }} position={[-canvasWidth / 2, -canvasHeight / 2, 0]}>
@@ -130,8 +121,7 @@ function App() {
 				onPointerMissed={() => (tileState.clicked = null)}>
 				<Suspense fallback={<Html center className="loading" children="Loading..." />}>
 					<Content />
-					{/* <Diamonds /> */}
-					<Items />
+					<Diamonds />
 					<Startup />
 				</Suspense>
 			</Canvas>
