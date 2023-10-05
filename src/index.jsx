@@ -79,7 +79,7 @@ function Content() {
 				</Block>
 				<Block factor={1.0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 					<Html className="bottom-left" style={{ color: "white" }} position={[-canvasWidth / 2, -canvasHeight / 2, 0]}>
-						Full Stack Software Engineer{mobile ? <br /> : " "}React || ASP.NET Core
+						Full Stack Software Engineer React || ASP.NET Core
 					</Html>
 				</Block>
 			</Block>
