@@ -7,7 +7,7 @@
 }
 
 :root {
-	font-size: 20px;
+	font-size: 25px;
 }
 
 ::selection {
@@ -21,7 +21,7 @@ body {
 	background: #0c0f13;
 	overflow: hidden;
 	font-family: "Sulphur Point", sans-serif;
-	color: #8b8b8b;
+	color: white;
 	font-size: 0.9rem;
 }
 
@@ -44,7 +44,8 @@ a:hover {
 .loading {
 	padding: 10px;
 	transform: translate3d(-50%, -50%, 0);
-	color: #8b8b8b;
+	color: white;
+	font-size: 1.2rem;
 }
 
 .scrollArea {
@@ -56,35 +57,8 @@ a:hover {
 	overflow: auto;
 }
 
-.frame {
-	position: absolute;
-	width: 100%;
-	top: 0;
-	left: 0;
-	padding: 1.5rem;
-	z-index: 2;
-}
-
-.frame__title {
-	font-size: inherit;
-	font-weight: normal;
-	margin: 0;
-}
-
-.frame__links {
-	margin: 1rem 0;
-}
-
-.frame__link:not(:last-child) {
-	margin-right: 1rem;
-}
-
-.frame__nav .frame__link:first-child {
-	margin-right: 1.5rem;
-}
-
 .bottom-left {
-	width: 350px;
+	width: 400px;
 	padding: 1.5rem;
 	transform: translate3d(0, -100%, 0) !important;
 }
@@ -132,8 +106,4 @@ a:hover {
 	.bottom-left {
 		padding: 0 0 2rem 3.7rem;
 	}
-}
-
-.w-border {
-	border: solid white 1px;
 }
