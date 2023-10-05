@@ -7,7 +7,7 @@
 }
 
 :root {
-	font-size: 20px;
+	font-size: 25px;
 }
 
 ::selection {
@@ -21,7 +21,7 @@ body {
 	background: #0c0f13;
 	overflow: hidden;
 	font-family: "Sulphur Point", sans-serif;
-	color: #8b8b8b;
+	color: white;
 	font-size: 0.9rem;
 }
 
