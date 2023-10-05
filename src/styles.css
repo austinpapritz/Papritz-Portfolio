@@ -58,9 +58,11 @@ a:hover {
 }
 
 .bottom-left {
+	background-color: rgba(19, 19, 19, 0.449);
+	border-radius: 15px 15px 0 15px;
 	width: 400px;
 	padding: 1.5rem;
-	transform: translate3d(0, -100%, 0) !important;
+	transform: translate3d(-15%, -100%, 0) !important;
 }
 
 .canvas > div {
