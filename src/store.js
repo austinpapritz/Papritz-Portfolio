@@ -25,7 +25,7 @@ const state = {
 		{
 			offset: 3,
 			factor: 2.25,
-			header: "Tic Tac Toe",
+			header: "\\/aporWave Tic-Tac-Toe ",
 			image: "/tic-tac-toe-ss.jpg",
 			aspect: 1.5,
 			text: "Come take a trip thru liminal hyperspace and enjoy a game of tic-tac-toe. Context provider tracks the turn order, calculates the win conditions, and processes the display messages."
@@ -33,7 +33,7 @@ const state = {
 		{
 			offset: 4,
 			factor: 2.0,
-			header: "Pierres Tasty Treats",
+			header: "Pierre's Tasty Treats",
 			image: "/Habanero-Potato-Empanada.jpg",
 			aspect: 1.5,
 			text: "Pierre's Tasty Treats is a web app that allows users to see what new treats and flavor combos are in the works at Pierre's Bakery. Admins can easily add, edit, and delete new treats and flavors."
