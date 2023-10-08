@@ -1,8 +1,9 @@
 import { createRoot } from "react-dom/client"
-import React, { Suspense, useEffect, useRef, useMemo } from "react"
-import { Canvas, useLoader, useFrame } from "@react-three/fiber"
+import React, { Suspense, useEffect, useRef, useMemo, useState } from "react"
+import { Canvas, useLoader, useFrame, useThree } from "@react-three/fiber"
 import { Html } from "@react-three/drei"
 import { TextureLoader, LinearFilter } from "three"
+import { useSpring, a } from "@react-spring/three"
 import lerp from "lerp"
 
 import { Text, MultilineText } from "./components/Text"
@@ -11,6 +12,24 @@ import Plane from "./components/Plane"
 import { Block, useBlock } from "./blocks"
 import state from "./store"
 import "./styles.css"
+
+const githubURL = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
+
+function ColorCycle() {
+	const colors = ["#21242d", "#8bd8d2", "#0d4663", "#ffbcb7", "#2d4a3e", "#ea5158"]
+	const { viewport } = useThree()
+	const [page, setPage] = useState(0)
+	useEffect(() => void setInterval(() => setPage((i) => (i + 1) % colors.length), 2200), [])
+	const { color } = useSpring({ color: colors[page] })
+	return (
+		<>
+			<mesh scale={[viewport.width, viewport.height, 1]}>
+				<planeGeometry />
+				<a.meshPhongMaterial color={color} depthTest={false} />
+			</mesh>
+		</>
+	)
+}
 
 // A Plane geometry that fades out in front of camera to give the illusion of a cinematic transition
 function Startup() {
@@ -70,10 +89,10 @@ function Content() {
 			{/* Block for Name and Position */}
 			<Block factor={1} offset={0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 				<Block factor={1.2} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
-					<Text left size={w * 0.16} position={[-w / 2.5, 3, -1]} color="#d40733">
+					<Text left size={w * 0.16} position={[-w / 2, 3, -1]} color="#d40733">
 						AUSTIN
 					</Text>
-					<Text left size={w * 0.16} position={[-w / 2.5, -1, -1]} color="#d40733">
+					<Text left size={w * 0.16} position={[-w / 2, -1, -1]} color="#d40733">
 						PAPRITZ
 					</Text>
 				</Block>
@@ -82,6 +101,7 @@ function Content() {
 						Full Stack Software Engineer React || ASP.NET Core
 					</Html>
 				</Block>
+				<ColorCycle />
 			</Block>
 			{/* Block for "hire me now" text */}
 			<Block factor={1.2} offset={5.7} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
@@ -119,6 +139,7 @@ function App() {
 				orthographic
 				camera={{ zoom: state.zoom, position: [0, 0, 500] }}
 				onPointerMissed={() => (tileState.clicked = null)}>
+				<ambientLight intensity={0.5} />
 				<Suspense fallback={<Html center className="loading" children="Loading..." />}>
 					<Content />
 					<Diamonds />
