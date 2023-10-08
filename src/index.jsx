@@ -78,6 +78,7 @@ function Content() {
 		TextureLoader,
 		state.paragraphs.map(({ image }) => image)
 	)
+	const scrollImg = useLoader(TextureLoader, "/scroll.png")
 
 	const defaultDepth = 1
 
@@ -96,8 +97,14 @@ function Content() {
 					</Text>
 				</Block>
 				<Block factor={1.0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
-					<Html className="bottom-left" style={{ color: "white" }} position={[-canvasWidth / 2, -canvasHeight / 2, 0]}>
+					<Html className="bottom-left" style={{ color: "black" }} position={[-canvasWidth / 2, -canvasHeight / 2, 0]}>
 						Full Stack Software Engineer React || ASP.NET Core
+					</Html>
+				</Block>
+				<Block factor={1.0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
+					{/* <Plane map={scrollImg} className="bottom-middle" position={[0, -2, 499]} /> */}
+					<Html position={[-canvasWidth / 10, -canvasHeight / 2, 0]}>
+						<img className="bottom-middle" src="scroll.png"></img>
 					</Html>
 				</Block>
 				<ColorCycle />

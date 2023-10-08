@@ -58,11 +58,35 @@ a:hover {
 }
 
 .bottom-left {
-	background-color: rgba(19, 19, 19, 0.449);
-	border-radius: 15px 15px 0 15px;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	height: 150px;
 	width: 400px;
-	padding: 1.5rem;
+	background-color: rgba(255, 255, 255, 0.449);
+	border-radius: 15px 15px 0 15px;
 	transform: translate3d(-15%, -100%, 0) !important;
+}
+
+.bottom-middle {
+	height: 150px;
+	background-color: rgba(255, 255, 255, 0.449);
+	border-radius: 100%;
+	padding: 1rem;
+	transform: translate3d(100%, -100%, 0);
+	animation: sineWave 2s infinite; /* Apply the sineWave animation */
+}
+
+@keyframes sineWave {
+	0% {
+		transform: translate3d(100%, calc(-100% - 5px), 0);
+	}
+	50% {
+		transform: translate3d(100%, calc(-100% + 5px), 0);
+	}
+	100% {
+		transform: translate3d(100%, calc(-100% - 5px), 0);
+	}
 }
 
 .canvas > div {
