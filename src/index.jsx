@@ -13,13 +13,19 @@ import { Block, useBlock } from "./blocks"
 import state from "./store"
 import "./styles.css"
 
-const githubURL = "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original-wordmark.svg"
+// A Plane geometry that fades out in front of camera to give the illusion of a cinematic transition
+function Startup() {
+	const ref = useRef()
+	useFrame(() => (ref.current.material.opacity = lerp(ref.current.material.opacity, 0, 0.025)))
+	return <Plane ref={ref} color="#0e0e0f" position={[0, 0, 200]} scale={[100, 100, 1]} />
+}
 
+// Colorful color cycle behind name
 function ColorCycle() {
 	const colors = ["#21242d", "#8bd8d2", "#0d4663", "#ffbcb7", "#2d4a3e", "#ea5158"]
 	const { viewport } = useThree()
 	const [page, setPage] = useState(0)
-	useEffect(() => void setInterval(() => setPage((i) => (i + 1) % colors.length), 2200), [])
+	useEffect(() => void setInterval(() => setPage((i) => (i + 1) % colors.length), 2500), [])
 	const { color } = useSpring({ color: colors[page] })
 	return (
 		<>
@@ -29,13 +35,6 @@ function ColorCycle() {
 			</mesh>
 		</>
 	)
-}
-
-// A Plane geometry that fades out in front of camera to give the illusion of a cinematic transition
-function Startup() {
-	const ref = useRef()
-	useFrame(() => (ref.current.material.opacity = lerp(ref.current.material.opacity, 0, 0.025)))
-	return <Plane ref={ref} color="#0e0e0f" position={[0, 0, 200]} scale={[100, 100, 1]} />
 }
 
 function Paragraph({ image, index, offset, factor, header, aspect, text }) {
