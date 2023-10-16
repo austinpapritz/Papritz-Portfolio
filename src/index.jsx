@@ -118,7 +118,7 @@ function Content() {
 			))}
 			{state.stripes.map(({ offset, color, height }, index) => (
 				<Block key={index} factor={-1.5} offset={offset} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
-					<Plane args={[50, height, 32, 32]} shift={-4} color={color} rotation={[0, 0, Math.PI / 8]} position={[0, 0, -10]} />
+					<Plane args={[35, height, 32, 32]} shift={-4} color={color} rotation={[0, 0, Math.PI / 8]} position={[0, 0, -10]} />
 				</Block>
 			))}
 			<Block factor={1.25} offset={8} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
