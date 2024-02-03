@@ -1,5 +1,4 @@
-import * as THREE from "three"
-const { Vector3 } = THREE
+import { Vector3 } from "three"
 import { FontLoader } from "three/addons/loaders/FontLoader.js"
 import { TextGeometry } from "three/examples/jsm/geometries/TextGeometry"
 import React, { useCallback, useRef } from "react"

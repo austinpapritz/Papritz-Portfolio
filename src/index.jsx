@@ -7,8 +7,8 @@ import { useSpring, a } from "@react-spring/three"
 import lerp from "lerp"
 
 import { Text, MultilineText } from "./components/Text"
-import Diamonds from "./diamonds/Diamonds"
-import Plane from "./components/Plane"
+const Diamonds = React.lazy(() => import("./diamonds/Diamonds"))
+const Plane = React.lazy(() => import("./components/Plane"))
 import { Block, useBlock } from "./blocks"
 import state from "./store"
 import "./styles.css"
@@ -123,7 +123,7 @@ function Content() {
 			))}
 			<Block factor={1.25} offset={8} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 				<Html style={{ color: "white" }} className="bottom-left" position={[-canvasWidth / 2, -canvasHeight / 2, 0]}>
-					Copywrite 2023
+					Copywrite 2024
 				</Html>
 			</Block>
 		</>
