@@ -1,5 +1,4 @@
-import { BoxGeometry, MeshBasicMaterial } from "three"
-import React, { createContext, useRef, useContext, useMemo } from "react"
+import React, { createContext, useRef, useContext } from "react"
 import { useFrame, useThree } from "@react-three/fiber"
 import lerp from "lerp"
 import state from "./store"

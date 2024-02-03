@@ -5,11 +5,10 @@ import { Html } from "@react-three/drei"
 import { TextureLoader, LinearFilter } from "three"
 import { useSpring, a } from "@react-spring/three"
 import lerp from "lerp"
-
-import { Text, MultilineText } from "./components/Text"
+const { Text, MultilineText } = React.lazy(() => import("./components/Text"))
 const Diamonds = React.lazy(() => import("./diamonds/Diamonds"))
 const Plane = React.lazy(() => import("./components/Plane"))
-import { Block, useBlock } from "./blocks"
+const { Block, useBlock } = React.lazy(() => import("./blocks"))
 import state from "./store"
 import "./styles.css"
 
@@ -78,12 +77,10 @@ function Content() {
 		TextureLoader,
 		state.paragraphs.map(({ image }) => image)
 	)
-	const scrollImg = useLoader(TextureLoader, "/scroll.png")
-
 	const defaultDepth = 1
 
 	useMemo(() => images.forEach((texture) => (texture.minFilter = LinearFilter)), [images])
-	const { contentMaxWidth: w, canvasWidth, canvasHeight, mobile } = useBlock()
+	const { contentMaxWidth: w, canvasWidth, canvasHeight } = useBlock()
 	return (
 		<>
 			{/* Block for Name and Position */}
@@ -102,7 +99,6 @@ function Content() {
 					</Html>
 				</Block>
 				<Block factor={1.0} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
-					{/* <Plane map={scrollImg} className="bottom-middle" position={[0, -2, 499]} /> */}
 					<Html position={[-canvasWidth / 10, -canvasHeight / 2, 0]}>
 						<img className="bottom-middle" src="scroll.png"></img>
 					</Html>
