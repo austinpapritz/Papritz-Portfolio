@@ -12,6 +12,18 @@ export default defineConfig({
 		open: true
 	},
 	build: {
+		rollupOptions: {
+			output: {
+				manualChunks(id) {
+					if (id.includes("node_modules")) {
+						// Return the directory name under node_modules as the chunk name
+						const directories = id.split("/node_modules/")[1].split("/")
+						const name = directories[0]
+						return `vendor.${name}`
+					}
+				}
+			}
+		},
 		outDir: "dist",
 		emptyOutDir: true,
 		sourcemap: true
