@@ -1,15 +1,7 @@
 {
-	"name": "moksha",
+	"name": "papritz-portfolio",
 	"version": "1.0.0",
-	"description": "Exploration into scroll containers tied to webgl content made for codrops.",
-	"keywords": [
-		"codrops",
-		"shaders",
-		"refraction",
-		"scroll",
-		"gltf"
-	],
-	"main": "src/index.js",
+	"main": "src/index.jsx",
 	"dependencies": {
 		"@react-spring/three": "^9.7.3",
 		"@react-three/drei": "^9.58.5",
