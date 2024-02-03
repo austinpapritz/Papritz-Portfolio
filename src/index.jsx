@@ -5,10 +5,11 @@ import { Html } from "@react-three/drei"
 import { TextureLoader, LinearFilter } from "three"
 import { useSpring, a } from "@react-spring/three"
 import lerp from "lerp"
-const { Text, MultilineText } = React.lazy(() => import("./components/Text"))
-const Diamonds = React.lazy(() => import("./diamonds/Diamonds"))
-const Plane = React.lazy(() => import("./components/Plane"))
-const { Block, useBlock } = React.lazy(() => import("./blocks"))
+
+import { Text, MultilineText } from "./components/Text"
+import Diamonds from "./diamonds/Diamonds"
+import Plane from "./components/Plane"
+import { Block, useBlock } from "./blocks"
 import state from "./store"
 import "./styles.css"
 
