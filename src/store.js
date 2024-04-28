@@ -46,7 +46,14 @@ const state = {
 			aspect: 1.5,
 			text: "{Tech stack icons}"
 		},
-		{ offset: 7, factor: 1.05, header: "Contact", image: "/headshot2.jpeg", aspect: 1.5, text: "{LinkedIn. GitHub. Email.}" }
+		{
+			offset: 7,
+			factor: 1.05,
+			header: "Contact Me",
+			image: "/headshot2.jpg",
+			aspect: 0.75,
+			text: "{LinkedIn, GitHub, Email}"
+		}
 	],
 	stripes: [
 		{ offset: 0, color: "#123", height: 13 },
