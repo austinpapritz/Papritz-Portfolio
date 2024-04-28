@@ -51,7 +51,7 @@ const state = {
 			factor: 1.05,
 			header: "Contact Me",
 			image: "/headshot2.jpg",
-			aspect: 0.75,
+			aspect: 0.7,
 			text: "{LinkedIn, GitHub, Email}"
 		}
 	],
