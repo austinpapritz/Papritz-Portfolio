@@ -8,39 +8,39 @@ const state = {
 	paragraphs: [
 		{
 			offset: 1,
-			factor: 1.75,
+			factor: 1.5,
 			header: "Bio",
 			image: "/climbing.jpg",
-			aspect: 0.8,
+			aspect: 1.2,
 			text: "Dynamic and driven developer, motivated to solve big problems and work in communication-centered teams. Avid climber and runner."
 		},
 		{
 			offset: 2,
-			factor: 2.0,
+			factor: 1.5,
 			header: "Pokédex Search",
 			image: "/pokedex_search_ss.png",
-			aspect: 1.5,
-			text: "The Pokédex Web Application presents users with an intuitive UI to search for Pokémon cards. The user can search Pokémon by name or type, then adding or removing a Pokémon from their personalized lineup with one click."
+			aspect: 1.75,
+			text: "The Pokédex Web App. Search and add Pokémon to your lineup."
 		},
 		{
 			offset: 3,
-			factor: 2.25,
+			factor: 1.5,
 			header: "\\/aporWave Tic-Tac-Toe ",
 			image: "/tic-tac-toe-ss.jpg",
-			aspect: 1.5,
-			text: "Come take a trip thru liminal hyperspace and enjoy a game of tic-tac-toe. Context provider tracks the turn order, calculates the win conditions, and processes the display messages."
+			aspect: 2,
+			text: "Come take a trip thru the liminal hyperspace and enjoy a game of tic-tac-toe."
 		},
 		{
 			offset: 4,
-			factor: 2.0,
-			header: "Agathos Design",
+			factor: 1.5,
+			header: "Agathos 3D Design",
 			image: "/agathos-ss.jpg",
-			aspect: 1.5,
+			aspect: 1.8,
 			text: "Designed with Figma, Photoshop, and Spline."
 		},
 		{
 			offset: 5,
-			factor: 1.75,
+			factor: 1.5,
 			header: "Tech Stack",
 			image: "/tech-stack.jpg",
 			aspect: 1.5,

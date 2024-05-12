@@ -1,7 +1,7 @@
 import { createRoot } from "react-dom/client"
 import React, { Suspense, useEffect, useRef, useMemo, useState } from "react"
 import { Canvas, useLoader, useFrame, useThree } from "@react-three/fiber"
-import { Html } from "@react-three/drei"
+import { Html, useAspect, useTexture, useVideoTexture } from "@react-three/drei"
 import { TextureLoader, LinearFilter } from "three"
 import { useSpring, a } from "@react-spring/three"
 import lerp from "lerp"
@@ -50,7 +50,11 @@ function Paragraph({ image, index, offset, factor, header, aspect, text }) {
 		<Block factor={factor} offset={offset} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 			<group position={[left ? -alignRight : alignRight, 0, 0]}>
 				{/* Plane component for image */}
-				<Plane map={image} args={[1, 1, 32, 32]} shift={200} size={size} aspect={aspect} scale={[w * size, (w * size) / aspect, 1]} frustumCulled={false} />
+				{index != 3 ? (
+					<Plane map={image} args={[1, 1, 32, 32]} shift={200} size={size} aspect={aspect} scale={[w * size, (w * size) / aspect, 1]} frustumCulled={false} />
+				) : (
+					<Agathos />
+				)}
 				{/* Html component for text body */}
 				<Html
 					style={{ width: pixelWidth / (mobile ? 1 : 2), textAlign: left ? "left" : "right" }}
@@ -71,6 +75,28 @@ function Paragraph({ image, index, offset, factor, header, aspect, text }) {
 			</group>
 		</Block>
 	)
+}
+
+function Agathos() {
+	const size = useAspect(820, 505)
+	return (
+		<mesh scale={7}>
+			<planeGeometry />
+			<Suspense fallback={<FallbackMaterial url="agathos-ss.jpg" />}>
+				<VideoMaterial url="agathos4.mp4" />
+			</Suspense>
+		</mesh>
+	)
+}
+
+function VideoMaterial({ url }) {
+	const texture = useVideoTexture(url)
+	return <meshBasicMaterial map={texture} toneMapped={false} />
+}
+
+function FallbackMaterial({ url }) {
+	const texture = useTexture(url)
+	return <meshBasicMaterial map={texture} toneMapped={false} />
 }
 
 function Content() {
@@ -110,6 +136,11 @@ function Content() {
 			<Block factor={1.2} offset={5.7} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 				<MultilineText top left size={w * 0.15} lineHeight={w / 5} position={[-w / 3.5, 0, -1]} color="#2fe85d" text={"hire\nme\nnow"} />
 			</Block>
+			{/* Agathos Block */}
+			{/* <Block factor={1.2} offset={4.7} blockWidth={720} blockHeight={497} blockDepth={defaultDepth}>
+				<Agathos />
+			</Block> */}
+			{/* Main blocks */}
 			{state.paragraphs.map((props, index) => (
 				<Paragraph key={index} index={index} {...props} image={images[index]} />
 			))}
@@ -118,6 +149,7 @@ function Content() {
 					<Plane args={[35, height, 32, 32]} shift={-4} color={color} rotation={[0, 0, Math.PI / 8]} position={[0, 0, -10]} />
 				</Block>
 			))}
+			{/* Final copywrite block */}
 			<Block factor={1.25} offset={8} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 				<Html style={{ color: "white" }} className="bottom-left" position={[-canvasWidth / 2, -canvasHeight / 2, 0]}>
 					Copywrite 2024
@@ -151,7 +183,9 @@ function App() {
 			</Canvas>
 			<div className="scrollArea" ref={scrollArea} onScroll={onScroll}>
 				{new Array(state.sections).fill().map((_, index) => (
-					<div key={index} id={"0" + index} style={{ height: `${(state.pages / state.sections) * 100}vh` }} />
+					<>
+						<div key={index} id={"0" + index} style={{ height: `${(state.pages / state.sections) * 100}vh` }} />
+					</>
 				))}
 			</div>
 		</>
