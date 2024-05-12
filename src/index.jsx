@@ -50,7 +50,7 @@ function Paragraph({ image, index, offset, factor, header, aspect, text }) {
 		<Block factor={factor} offset={offset} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 			<group position={[left ? -alignRight : alignRight, 0, 0]}>
 				{/* Plane component for image */}
-				{index != 3 ? (
+				{index != 1 ? (
 					<Plane map={image} args={[1, 1, 32, 32]} shift={200} size={size} aspect={aspect} scale={[w * size, (w * size) / aspect, 1]} frustumCulled={false} />
 				) : (
 					<Agathos />
@@ -65,13 +65,6 @@ function Paragraph({ image, index, offset, factor, header, aspect, text }) {
 				<Text left={left} right={!left} size={w * 0.04} color={color} top position={[((left ? -w : w) * size) / 2, (w * size) / aspect / 2 + 0.5, -1]}>
 					{header}
 				</Text>
-				{/* Block for large numbers in bg */}
-				<Block factor={0.2} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
-					{/* Large numbers text */}
-					<Text opacity={0.5} size={w * 0.5} color="#1A1E2A" position={[((left ? w : -w) / 2) * size, (w * size) / aspect / 1, -10]}>
-						{"0" + (index + 1)}
-					</Text>
-				</Block>
 			</group>
 		</Block>
 	)
@@ -80,7 +73,7 @@ function Paragraph({ image, index, offset, factor, header, aspect, text }) {
 function Agathos() {
 	const size = useAspect(820, 505)
 	return (
-		<mesh scale={7}>
+		<mesh scale={11} position={[-8, 0, 0]}>
 			<planeGeometry />
 			<Suspense fallback={<FallbackMaterial url="agathos-ss.jpg" />}>
 				<VideoMaterial url="agathos4.mp4" />

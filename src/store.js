@@ -17,26 +17,26 @@ const state = {
 		{
 			offset: 2,
 			factor: 1.5,
+			header: "Agathos 3D Design",
+			image: "/agathos-ss.jpg",
+			aspect: 1.8,
+			text: "Designed with Figma, Photoshop, and Spline."
+		},
+		{
+			offset: 3,
+			factor: 1.5,
 			header: "Pokédex Search",
 			image: "/pokedex_search_ss.png",
 			aspect: 1.75,
 			text: "The Pokédex Web App. Search and add Pokémon to your lineup."
 		},
 		{
-			offset: 3,
+			offset: 4,
 			factor: 1.5,
 			header: "\\/aporWave Tic-Tac-Toe ",
 			image: "/tic-tac-toe-ss.jpg",
 			aspect: 2,
 			text: "Come take a trip thru the liminal hyperspace and enjoy a game of tic-tac-toe."
-		},
-		{
-			offset: 4,
-			factor: 1.5,
-			header: "Agathos 3D Design",
-			image: "/agathos-ss.jpg",
-			aspect: 1.8,
-			text: "Designed with Figma, Photoshop, and Spline."
 		},
 		{
 			offset: 5,
