@@ -73,10 +73,10 @@ function Paragraph({ image, index, offset, factor, header, aspect, text }) {
 function Agathos() {
 	const size = useAspect(820, 505)
 	return (
-		<mesh scale={11} position={[-8, 0, 0]}>
-			<planeGeometry />
+		<mesh scale={0.11} position={[-7, -0.5, 0]}>
+			<planeGeometry args={[133.33, 75, 1]} />
 			<Suspense fallback={<FallbackMaterial url="agathos-ss.jpg" />}>
-				<VideoMaterial url="agathos4.mp4" />
+				<VideoMaterial url="agathos-demo.mp4" />
 			</Suspense>
 		</mesh>
 	)
@@ -129,10 +129,6 @@ function Content() {
 			<Block factor={1.2} offset={5.7} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 				<MultilineText top left size={w * 0.15} lineHeight={w / 5} position={[-w / 3.5, 0, -1]} color="#2fe85d" text={"hire\nme\nnow"} />
 			</Block>
-			{/* Agathos Block */}
-			{/* <Block factor={1.2} offset={4.7} blockWidth={720} blockHeight={497} blockDepth={defaultDepth}>
-				<Agathos />
-			</Block> */}
 			{/* Main blocks */}
 			{state.paragraphs.map((props, index) => (
 				<Paragraph key={index} index={index} {...props} image={images[index]} />

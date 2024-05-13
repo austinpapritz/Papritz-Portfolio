@@ -11,7 +11,7 @@ const state = {
 			factor: 1.5,
 			header: "Bio",
 			image: "/climbing.jpg",
-			aspect: 1.2,
+			aspect: 1.6,
 			text: "Dynamic and driven developer, motivated to solve big problems and work in communication-centered teams. Avid climber and runner."
 		},
 		{
