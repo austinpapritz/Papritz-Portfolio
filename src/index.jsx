@@ -71,10 +71,10 @@ function Paragraph({ image, index, offset, factor, header, aspect, text }) {
 }
 
 function Agathos() {
-	const size = useAspect(820, 505)
+	const size = useAspect(1920, 1080)
 	return (
-		<mesh scale={0.11} position={[-7, -0.5, 0]}>
-			<planeGeometry args={[133.33, 75, 1]} />
+		<mesh scale={size} position={[-7, -0.5, 0]}>
+			<planeGeometry args={[0.7, 0.7, 1]} />
 			<Suspense fallback={<FallbackMaterial url="agathos-ss.jpg" />}>
 				<VideoMaterial url="agathos-demo.mp4" />
 			</Suspense>
