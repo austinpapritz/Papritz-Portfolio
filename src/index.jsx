@@ -126,7 +126,7 @@ function Content() {
 				<ColorCycle />
 			</Block>
 			{/* Block for "hire me now" text */}
-			<Block factor={1.2} offset={5.7} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
+			<Block factor={1.2} offset={4.75} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 				<MultilineText top left size={w * 0.15} lineHeight={w / 5} position={[-w / 3.5, 0, -1]} color="#2fe85d" text={"hire\nme\nnow"} />
 			</Block>
 			{/* Main blocks */}

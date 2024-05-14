@@ -39,15 +39,7 @@ const state = {
 			text: "Come take a trip thru the liminal hyperspace and enjoy a game of tic-tac-toe."
 		},
 		{
-			offset: 5,
-			factor: 1.5,
-			header: "Tech Stack",
-			image: "/tech-stack.jpg",
-			aspect: 1.5,
-			text: "{Tech stack icons}"
-		},
-		{
-			offset: 7,
+			offset: 6.5,
 			factor: 1.05,
 			header: "Contact Me",
 			image: "/headshot2.jpg",
