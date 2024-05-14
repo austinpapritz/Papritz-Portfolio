@@ -44,7 +44,7 @@ const state = {
 			header: "Contact Me",
 			image: "/headshot2.jpg",
 			aspect: 0.7,
-			text: "I cannot figure out click events yet. Just look me up on LinkedIn or GitHub. It's not that hard."
+			text: "I cannot figure out click events yet. Just look me up on LinkedIn or GitHub."
 		}
 	],
 	stripes: [
