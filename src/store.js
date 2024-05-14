@@ -33,10 +33,10 @@ const state = {
 		{
 			offset: 4,
 			factor: 1.5,
-			header: "\\/aporWave Tic-Tac-Toe ",
-			image: "/tic-tac-toe-ss.jpg",
-			aspect: 2,
-			text: "Come take a trip thru the liminal hyperspace and enjoy a game of tic-tac-toe."
+			header: "Passiroo",
+			image: "/passiroo-ss.png",
+			aspect: 1,
+			text: "Lightweight desktop password manager — backend rigorously built in Python, frontend executed with Electron.js."
 		},
 		{
 			offset: 6.5,
@@ -44,7 +44,7 @@ const state = {
 			header: "Contact Me",
 			image: "/headshot2.jpg",
 			aspect: 0.7,
-			text: "{LinkedIn, GitHub, Email}"
+			text: "I cannot figure out click events yet. Just look me up on LinkedIn or GitHub. It's not that hard."
 		}
 	],
 	stripes: [
