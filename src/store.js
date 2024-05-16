@@ -44,7 +44,7 @@ const state = {
 			header: "Contact Me",
 			image: "/headshot2.jpg",
 			aspect: 0.7,
-			text: "I cannot figure out click events yet. Just look me up on LinkedIn or GitHub."
+			text: "I cannot yet figure out click events in this older version of Three.js. Just look me up on LinkedIn or GitHub."
 		}
 	],
 	stripes: [
