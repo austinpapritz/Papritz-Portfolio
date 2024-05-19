@@ -49,6 +49,19 @@ function Paragraph({ image, index, offset, factor, header, aspect, text }) {
 		// Block containing entire paragraph
 		<Block factor={factor} offset={offset} blockWidth={canvasWidth} blockHeight={canvasHeight} blockDepth={defaultDepth}>
 			<group position={[left ? -alignRight : alignRight, 0, 0]}>
+				{header === "Contact Me" && (
+					<Html index={991} className="html-container" position={[2, -6.5, 0]}>
+						<div className="svg-container">
+							<a href="https://www.linkedin.com/in/austinpapritz/">
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-original.svg" height="100px" />
+							</a>
+
+							<a href="https://github.com/austinpapritz">
+								<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg" height="100px" className="github-svg" />
+							</a>
+						</div>
+					</Html>
+				)}
 				{/* Plane component for image */}
 				{index != 1 ? (
 					<Plane map={image} args={[1, 1, 32, 32]} shift={200} size={size} aspect={aspect} scale={[w * size, (w * size) / aspect, 1]} frustumCulled={false} />

@@ -94,7 +94,7 @@ a:hover {
 }
 
 #root > div > div {
-	pointer-events: none;
+	pointer-events: all;
 }
 
 @media screen and (min-width: 53em) {
@@ -132,4 +132,25 @@ a:hover {
 	.bottom-left {
 		padding: 0 0 2rem 3.7rem;
 	}
+}
+
+.html-container {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: end;
+	align-items: end;
+}
+.svg-container {
+	background: rgb(51, 51, 51, 0.5);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	gap: 25px;
+}
+
+.svg-container a .github-svg {
+	background: rgb(255, 255, 255, 0.25);
 }
